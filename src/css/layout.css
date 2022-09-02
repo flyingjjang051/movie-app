@@ -153,6 +153,7 @@ li {
   border: 10px solid #fff;
 }
 .detail .detailBox .info {
+  overflow: hidden;
   background-color: #fff;
   border-radius: 50px 0 50px 0;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
@@ -174,17 +175,32 @@ li {
   margin: 10px 0;
 }
 .detail .detailBox .info .summary dl {
-  display: flex;
   margin-bottom: 10px;
   padding-bottom: 10px;
   border-bottom: 1px dotted #ccc;
   align-items: center;
 }
-.detail .detailBox .info .summary dl dt {
-  margin-right: 20px;
-}
 .detail .detailBox .info .summary dl dd {
   font-weight: 500;
+  font-size: 20px;
+  margin-top: 10px;
+}
+.detail .profileList {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+}
+.detail .profileList li {
+  display: flex;
+  flex-direction: column;
+  margin: 0 5px;
+}
+.detail .profileList li img {
+  width: 80px;
+}
+.detail .profileList li span {
+  font-size: 12px;
+  margin-top: 10px;
 }
 .detail .bg {
   position: fixed;

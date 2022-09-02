@@ -8,13 +8,21 @@ export default function Detail() {
   const movieID = params.id;
   const [detail, setDetail] = useState({});
   const [genres, setGenres] = useState([]);
+  const [cast, setCast] = useState([]);
+  const [crew, setCrew] = useState([]);
   useEffect(() => {
     axios.get(`https://api.themoviedb.org/3/movie/${movieID}?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=ko-KR&page=1`).then((res) => {
       console.log(res.data);
       setDetail(res.data);
       setGenres(res.data.genres);
     });
+    axios.get(`https://api.themoviedb.org/3/movie/${movieID}/credits?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=ko-KR&page=1`).then((res) => {
+      console.log(res.data);
+      setCast(res.data.cast);
+      setCrew(res.data.crew);
+    });
   }, []);
+
   return (
     <div id="detail" className="detail">
       <div className="container">
@@ -56,6 +64,36 @@ export default function Detail() {
               <dl>
                 <dt>관객투표</dt>
                 <dd>{detail.vote_count}</dd>
+              </dl>
+              <dl>
+                <dt>cast</dt>
+                <dd>
+                  <ul className="profileList">
+                    {cast.map((item, idx) => {
+                      return (
+                        <li key={idx}>
+                          <img src={`https://image.tmdb.org/t/p/w185/${item.profile_path}`} />
+                          <span>{item.name}</span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </dd>
+              </dl>
+              <dl>
+                <dt>crew</dt>
+                <dd>
+                  <ul className="profileList">
+                    {crew.map((item, idx) => {
+                      return (
+                        <li key={idx}>
+                          <img src={`https://image.tmdb.org/t/p/w185/${item.profile_path}`} />
+                          <span>{item.name}</span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </dd>
               </dl>
             </div>
             <div className="overviewBox">

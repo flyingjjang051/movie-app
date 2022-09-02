@@ -158,6 +158,7 @@ $blue: rgb(15, 103, 218);
       }
     }
     .info {
+      overflow: hidden;
       background-color: #fff;
       border-radius: 50px 0 50px 0;
       box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
@@ -179,18 +180,37 @@ $blue: rgb(15, 103, 218);
       }
       .summary {
         dl {
-          display: flex;
+          //display: flex;
           margin-bottom: 10px;
           padding-bottom: 10px;
           border-bottom: 1px dotted #ccc;
           align-items: center;
           dt {
-            margin-right: 20px;
+            //margin-right: 20px;
           }
           dd {
             font-weight: 500;
+            font-size: 20px;
+            margin-top: 10px;
           }
         }
+      }
+    }
+  }
+  .profileList {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    li {
+      display: flex;
+      flex-direction: column;
+      margin: 0 5px;
+      img {
+        width: 80px;
+      }
+      span {
+        font-size: 12px;
+        margin-top: 10px;
       }
     }
   }
