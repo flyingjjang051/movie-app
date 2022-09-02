@@ -207,6 +207,8 @@ $blue: rgb(15, 103, 218);
       margin: 0 5px;
       img {
         width: 80px;
+        height: 120px;
+        object-fit: cover;
       }
       span {
         font-size: 12px;

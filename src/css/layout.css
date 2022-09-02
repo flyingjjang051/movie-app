@@ -197,6 +197,8 @@ li {
 }
 .detail .profileList li img {
   width: 80px;
+  height: 120px;
+  object-fit: cover;
 }
 .detail .profileList li span {
   font-size: 12px;

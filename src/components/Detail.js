@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Profile from "./Profile";
 
 export default function Detail() {
   //  /detail/899832
@@ -71,10 +72,12 @@ export default function Detail() {
                   <ul className="profileList">
                     {cast.map((item, idx) => {
                       return (
-                        <li key={idx}>
-                          <img src={`https://image.tmdb.org/t/p/w185/${item.profile_path}`} />
-                          <span>{item.name}</span>
-                        </li>
+                        <Profile key={idx} profileInfo={item} />
+                        //<Profile key={idx} profile_path={item.profile_path} name={item.name} />
+                        // <li key={idx}>
+                        //   <img src={`https://image.tmdb.org/t/p/w185/${item.profile_path}`} />
+                        //   <span>{item.name}</span>
+                        // </li>
                       );
                     })}
                   </ul>
@@ -86,10 +89,12 @@ export default function Detail() {
                   <ul className="profileList">
                     {crew.map((item, idx) => {
                       return (
-                        <li key={idx}>
-                          <img src={`https://image.tmdb.org/t/p/w185/${item.profile_path}`} />
-                          <span>{item.name}</span>
-                        </li>
+                        <Profile key={idx} profileInfo={item} />
+                        // <Profile key={idx} profile_path={item.profile_path} name={item.name} />
+                        // <li key={idx}>
+                        //   <img src={`https://image.tmdb.org/t/p/w185/${item.profile_path}`} />
+                        //   <span>{item.name}</span>
+                        // </li>
                       );
                     })}
                   </ul>
