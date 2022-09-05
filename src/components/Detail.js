@@ -2,15 +2,18 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Profile from "./Profile";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 export default function Detail() {
-  //  /detail/899832
+  //  /detail/8493824
   const params = useParams();
   const movieID = params.id;
   const [detail, setDetail] = useState({});
   const [genres, setGenres] = useState([]);
-  const [cast, setCast] = useState([]);
+  const [cast, setCast] = useState([]); //   get / set
   const [crew, setCrew] = useState([]);
+
   useEffect(() => {
     axios.get(`https://api.themoviedb.org/3/movie/${movieID}?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=ko-KR&page=1`).then((res) => {
       console.log(res.data);
@@ -18,7 +21,6 @@ export default function Detail() {
       setGenres(res.data.genres);
     });
     axios.get(`https://api.themoviedb.org/3/movie/${movieID}/credits?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=ko-KR&page=1`).then((res) => {
-      console.log(res.data);
       setCast(res.data.cast);
       setCrew(res.data.crew);
     });
@@ -69,35 +71,31 @@ export default function Detail() {
               <dl>
                 <dt>cast</dt>
                 <dd>
-                  <ul className="profileList">
+                  <Swiper className="profileList" spaceBetween={10} slidesPerView={"auto"}>
                     {cast.map((item, idx) => {
                       return (
-                        <Profile key={idx} profileInfo={item} />
-                        //<Profile key={idx} profile_path={item.profile_path} name={item.name} />
-                        // <li key={idx}>
-                        //   <img src={`https://image.tmdb.org/t/p/w185/${item.profile_path}`} />
-                        //   <span>{item.name}</span>
-                        // </li>
+                        <SwiperSlide className="item">
+                          <Profile key={idx} profileInfo={item} />
+                        </SwiperSlide>
                       );
+                      //return <Profile key={idx} profile_path={item.profile_path} name={item.name} />;
                     })}
-                  </ul>
+                  </Swiper>
                 </dd>
               </dl>
               <dl>
                 <dt>crew</dt>
                 <dd>
-                  <ul className="profileList">
+                  <Swiper className="profileList" spaceBetween={10} slidesPerView={"auto"}>
                     {crew.map((item, idx) => {
                       return (
-                        <Profile key={idx} profileInfo={item} />
-                        // <Profile key={idx} profile_path={item.profile_path} name={item.name} />
-                        // <li key={idx}>
-                        //   <img src={`https://image.tmdb.org/t/p/w185/${item.profile_path}`} />
-                        //   <span>{item.name}</span>
-                        // </li>
+                        <SwiperSlide className="item">
+                          <Profile key={idx} profileInfo={item} />
+                        </SwiperSlide>
                       );
+                      //return <Profile key={idx} profile_path={item.profile_path} name={item.name} />;
                     })}
-                  </ul>
+                  </Swiper>
                 </dd>
               </dl>
             </div>
