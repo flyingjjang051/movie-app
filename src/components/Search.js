@@ -1,16 +1,23 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Search() {
   const [search, setSearch] = useState("");
+  const navigate = useNavigate();
+  console.log("this===", this);
   return (
     <div id="search" className="search">
       <input
         type="text"
         placeholder="search movie"
-        onChange={function (e) {
-          //console.log(this);
-          setSearch(e.target.value);
+        onChange={(e) => {
+          setSearch(e.currentTarget.value);
+        }}
+        onKeyUp={(e) => {
+          console.log(e.key);
+          if (e.key === "Enter") {
+            navigate(`/search?movie=${search}`);
+          }
         }}
       />
       <Link className="btnSearch" to={`/search?movie=${search}`}>

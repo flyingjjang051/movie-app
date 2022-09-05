@@ -14,11 +14,9 @@ export default function List() {
   //console.log(useLocation());
   const location = useLocation();
   const searchMovie = qs.parse(location.search, { ignoreQueryPrefix: true }).movie; //? 무시하기....
-  //const test = qs.parse(location.search, { ignoreQueryPrefix: true }).test;
-  //console.log(searchMovie);
+  //console.log(location);
   //console.log("test===", test);
   // useLocation()에 있는 search에 query string정보가 들어가 있음...
-
   useEffect(() => {
     axios
       .get(
