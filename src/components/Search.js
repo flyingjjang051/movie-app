@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 export default function Search() {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
-  console.log("this===", this);
   return (
     <div id="search" className="search">
       <input

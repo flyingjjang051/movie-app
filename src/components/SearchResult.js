@@ -11,13 +11,11 @@ export default function List() {
   //const items = gsap.utils.selector(movieList);
   //const query = "슈퍼맨";
   const [movies, setMovies] = useState([]);
-  //console.log(useLocation());
   const location = useLocation();
   const searchMovie = qs.parse(location.search, { ignoreQueryPrefix: true }).movie; //? 무시하기....
-  //console.log(location);
-  //console.log("test===", test);
-  // useLocation()에 있는 search에 query string정보가 들어가 있음...
   useEffect(() => {
+    // state 또는 변수가 바꼈을때 실행하는 함수.....
+    console.log("나는 state가 바꼈을때 실행하는 함수입니다.");
     axios
       .get(
         `
@@ -27,13 +25,13 @@ export default function List() {
         console.log(res.data.results);
         setMovies(res.data.results);
       });
-  }, []);
+  }, [searchMovie]);
 
   return (
     <>
       <div className="container">
         <h2 className="title">
-          <strong>popolar</strong> movie
+          <strong>search</strong> movie
         </h2>
         <ul className="movieList">
           {movies.map((item, idx) => {
