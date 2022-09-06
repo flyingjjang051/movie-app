@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Profile from "./Profile";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -13,6 +13,7 @@ export default function Detail() {
   const [genres, setGenres] = useState([]);
   const [cast, setCast] = useState([]); //   get / set
   const [crew, setCrew] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get(`https://api.themoviedb.org/3/movie/${movieID}?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=ko-KR&page=1`).then((res) => {
@@ -114,6 +115,16 @@ export default function Detail() {
               <p className="overview">{detail.overview}</p>
             </div>
           </div>
+        </div>
+        <div className="btns">
+          <button
+            className="btn btnBack"
+            onClick={function () {
+              navigate(-1);
+            }}
+          >
+            BACK
+          </button>
         </div>
       </div>
       <div className="bg" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${detail.backdrop_path})` }}></div>
