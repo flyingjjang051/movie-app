@@ -5,7 +5,7 @@ export default function Header() {
     <>
       <header id="header" className="header">
         <h1>
-          <Link to="/">MOVIE-APP</Link>
+          <Link to="/">DIARY</Link>
         </h1>
         <Search />
       </header>
