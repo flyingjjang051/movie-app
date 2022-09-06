@@ -225,6 +225,8 @@ $blue: rgb(15, 103, 218);
     z-index: -1;
     left: 0;
     top: 0;
+    background-position: 50%;
+    background-size: cover;
     &:before {
       content: "";
       display: block;
@@ -377,6 +379,7 @@ $blue: rgb(15, 103, 218);
   display: flex;
   justify-content: center;
   margin-top: 100px;
+  margin-bottom: 50px;
   p {
     padding: 15px 30px;
     background-color: #fff;

@@ -59,7 +59,6 @@ export default function Detail() {
                 <dt>런타임</dt>
                 <dd>{detail.runtime}</dd>
               </dl>
-
               <dl>
                 <dt>관객평점</dt>
                 <dd>{detail.vote_average}</dd>
@@ -72,14 +71,20 @@ export default function Detail() {
                 <dt>cast</dt>
                 <dd>
                   <Swiper className="profileList" spaceBetween={10} slidesPerView={"auto"}>
-                    {cast.map((item, idx) => {
-                      return (
-                        <SwiperSlide className="item">
-                          <Profile key={idx} profileInfo={item} />
-                        </SwiperSlide>
-                      );
-                      //return <Profile key={idx} profile_path={item.profile_path} name={item.name} />;
-                    })}
+                    {cast
+                      .filter((item, idx) => {
+                        if (idx < 10) {
+                          return true;
+                        }
+                      })
+                      .map((item, idx) => {
+                        return (
+                          <SwiperSlide className="item">
+                            <Profile key={idx} profileInfo={item} />
+                          </SwiperSlide>
+                        );
+                        //return <Profile key={idx} profile_path={item.profile_path} name={item.name} />;
+                      })}
                   </Swiper>
                 </dd>
               </dl>
@@ -87,14 +92,20 @@ export default function Detail() {
                 <dt>crew</dt>
                 <dd>
                   <Swiper className="profileList" spaceBetween={10} slidesPerView={"auto"}>
-                    {crew.map((item, idx) => {
-                      return (
-                        <SwiperSlide className="item">
-                          <Profile key={idx} profileInfo={item} />
-                        </SwiperSlide>
-                      );
-                      //return <Profile key={idx} profile_path={item.profile_path} name={item.name} />;
-                    })}
+                    {crew
+                      .filter((item, idx) => {
+                        if (idx < 10) {
+                          return true;
+                        }
+                      })
+                      .map((item, idx) => {
+                        return (
+                          <SwiperSlide className="item">
+                            <Profile key={idx} profileInfo={item} />
+                          </SwiperSlide>
+                        );
+                        //return <Profile key={idx} profile_path={item.profile_path} name={item.name} />;
+                      })}
                   </Swiper>
                 </dd>
               </dl>

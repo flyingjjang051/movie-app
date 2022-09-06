@@ -215,6 +215,8 @@ li {
   z-index: -1;
   left: 0;
   top: 0;
+  background-position: 50%;
+  background-size: cover;
 }
 .detail .bg:before {
   content: "";
@@ -263,6 +265,7 @@ li {
   display: flex;
   justify-content: center;
   margin-top: 100px;
+  margin-bottom: 50px;
 }
 #footer p {
   padding: 15px 30px;
